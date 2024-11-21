@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const flowchartRoutes = require("./routes/flowchart");
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -16,6 +17,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use("/api/flowchart", flowchartRoutes);
 
 app.get("/health", (req, res) => {
   res.status(200).send("Backend is running!");
