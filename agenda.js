@@ -1,4 +1,5 @@
 const Agenda = require("agenda");
+const sendEmail = require("./emailService");
 require("dotenv").config();
 
 const agenda = new Agenda({
@@ -7,7 +8,7 @@ const agenda = new Agenda({
 
 agenda.define("send email", async (job) => {
   const { email, subject, body } = job.attrs.data;
-  console.log(`Sending email to ${email} with subject: ${subject}`);
+  await sendEmail({ email, subject, body });
 });
 
 agenda.start();
