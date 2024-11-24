@@ -3,7 +3,7 @@ const sendEmail = require("./emailService");
 require("dotenv").config();
 
 const agenda = new Agenda({
-  db: { address: process.env.MONGO_URI, collection: "jobs" },
+  db: { address: process.env.MONGO_URL, collection: "jobs" },
 });
 
 agenda.define("send email", async (job) => {
